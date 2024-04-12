@@ -9,36 +9,37 @@ typedef struct listNode{
 
 listPointer head,tail;
 
-void createNode(){
+listPointer createNode(listPointer tail){
     listPointer temp;
     MALLOC(temp,sizeof(struct listNode));
-    // temp->data=data;
-    int data;
-    printf("Enter the data");
-    scanf("%d",&data);
-    if(head){
-        tail->link=temp;
-        // tempn=tail;
-        temp->data=data;
-        temp->link=NULL;
-        tail=temp;
-        printf("%d\n",temp->data);
-    }
-    head->link=temp;
-    temp->data=data;
+    printf("Enter the data ");
+    scanf("%d",&temp->data);
+    
+   
+    tail->link=temp;
+        // printf("asd")
     temp->link=NULL;
-    printf("%d\n",temp->data);
+    return temp;
+
 }
 int main(){
-    int n;
+    int n;  
+    
+    // MALLOC(tail,sizeof(struct listNode));
     MALLOC(head,sizeof(struct listNode));
-    MALLOC(tail,sizeof(struct listNode));
+        head->data=0;
+        head->link=tail;
+    tail=head;
+
     printf("Enter the no of nodes in linked list ");
     scanf("\n%d",&n);
     for(int i=0;i<n;i++){
-        createNode();
+        tail=createNode(tail);
+        printf("%d",tail->data);
     }
+    printf("the elements in the linkedlist are");
     for(;head;head=head->link){
-        printf("%d\n",head->data);
+        printf("%d",head->data);
     }
+   
 }
