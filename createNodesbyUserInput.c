@@ -29,7 +29,7 @@ int main(){
     MALLOC(head,sizeof(struct listNode));
         head->data=0;
         head->link=tail;
-    tail=head;
+        tail=head;
 
     printf("Enter the no of nodes in linked list ");
     scanf("\n%d",&n);
