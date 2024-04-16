@@ -1,3 +1,4 @@
+//This is program deletes the even nodes from the user entered linkedlist
 #include<stdio.h>
 #include<stdlib.h>
 #define MALLOC(p,s) if(!((p) = malloc(s))){ fprintf(stderr,"Insufficient memory");}
