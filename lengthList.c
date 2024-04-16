@@ -14,18 +14,14 @@ listPointer createNode(listPointer tail){
     MALLOC(temp,sizeof(struct listNode));
     printf("Enter the data ");
     scanf("%d",&temp->data);
-    
-   
     tail->link=temp;
-        // printf("asd")
     temp->link=NULL;
     return temp;
 
 }
 int main(){
     int n;  
-    int count=0;
-    // MALLOC(tail,sizeof(struct listNode));
+    int count=-1;
     MALLOC(head,sizeof(struct listNode));
         head->data=0;
         head->link=tail;
@@ -37,10 +33,10 @@ int main(){
         tail=createNode(tail);
         printf("%d",tail->data);
     }
-    printf("the elements in the linkedlist are");
+    printf("the elements in the linkedlist are \n");
     for(;head;head=head->link){
-        printf("%d",head->data);
+        printf("%d\n",head->data);
         count++;
     }
-   printf("%d",count-1);          
+   printf("The number of elements in the linked list are %d \n",count);          
 }
