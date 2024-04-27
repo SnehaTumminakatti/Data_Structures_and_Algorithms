@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX_STACKS 10
+
+typedef struct listNode *listPointer;
+
+typedef struct listNode{
+    int data;
+    listPointer link;
+}listNode;
+
+typedef struct stack{
+    listPointer top;
+    listPointer header;
+}stack;
+
+
+void push(stack *list){
+    listPointer temp;
+    int data;
+    temp=malloc(sizeof(struct listNode));
+    printf("Enter the data you want to store");
+    scanf("%d",&data);
+    temp->data=data;
+    temp->link=NULL;
+    if(list->header==list->top){
+        list->header->data=0;
+        list->header->link=temp;
+        list->top=list->header;
+        list->top=temp;
+        return;
+    }
+    list->top->link=temp;
+    list->top=temp;
+}
+
+void printList(stack *list){
+    listPointer temp;
+    temp=list->header;
+    for(;temp;temp=temp->link){
+        printf("%d",temp->data);
+    }
+}
+
+stack* createLinkedStack(){
+    stack *list;
+    list=malloc(sizeof(struct stack*));
+    list->header=malloc(sizeof(struct listNode));
+    list->top=list->header;
+    list->header->link=list->top;
+    return list;
+}
+
+int pop(stack *list){
+    listPointer temp;
+    int item;
+    temp=list->top;
+    item=temp->data;
+    free(temp);
+    return item;
+}
+
+int main(){
+    stack *list;
+    int choice,status;
+    list=createLinkedStack();
+    printf("Enter the Operation to performed\n 1. pop()\t 2. push()\t 3. quit\n");
+    scanf("%d",&choice);
+    status=1;
+    while(status){
+        
+    }
+
+
+}
