@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+
 typedef struct listNode *listPointer;
 typedef struct listNode{
     int data;
@@ -23,12 +24,16 @@ void push(stack *list){
         list->header->link=temp;
         temp->link=list->header;
         list->top=temp;
+        list->header->data=list->header->data+1;
         return;
     }
+        list->header->data=list->header->data+1;
+
     curNode=list->top;
     curNode->link=temp;
     list->top=temp;
     temp->link=curNode;
+    
 }
 
 int stackEmpty(stack *s){
@@ -41,10 +46,14 @@ int pop(stack *s){
         return 0;
     }
     listPointer temp;
-    int item;
-    temp=s->top;
+    int item,t;
+    t=s->header->data;
+    temp=s->header;
+    for(int i=0;i<t;i++){
+       temp=temp->link;
+    }
     item=temp->data;
-    s->top=temp->link;
+    s->header->data=--t;
     free(temp);
     return item;
 }
@@ -60,24 +69,27 @@ stack* createLinkedStack(){
 }
 
 void displayList(stack *s){
-    listPointer temp,list;
-    temp=s->top;
-    list=temp;
-    while(temp->link!=s->header->link){
-        printf("a");
+    listPointer temp;
+    temp=s->header;
+    int numNodes=s->header->data;
+    temp=temp->link;
+    for(int i=0;i<numNodes;i++){
+        printf("\t%d",temp->data);
         temp=temp->link;
     }
+    puts("");
+   
 }
 
 void doStackOperations(stack* s){
     int choice;
     
     while(1){
-        printf("Enter the Operation to be performed:\n");
+        printf("\nEnter the Operation to be performed:\n");
         printf("1. PUSH\t 2. POP\t 3. QUIT\n");
         scanf("%d",&choice);
         if(choice==3){
-            break;
+            return;
         }
 
         if(choice==1){
@@ -87,7 +99,7 @@ void doStackOperations(stack* s){
         }
         
         if(choice==2){
-            pop(s);
+            printf("The Poped element is : %d \n",pop(s));
             printf("The elements after the pop Operation are as follows\n");
             displayList(s);
         }
@@ -97,9 +109,5 @@ void doStackOperations(stack* s){
 int main(){
     stack *list;
     list=createLinkedStack();
-    // push(list);
-    // push(list);
-    // push(list);
-
     doStackOperations(list);
 }
