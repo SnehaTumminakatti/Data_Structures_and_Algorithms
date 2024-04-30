@@ -6,10 +6,44 @@ typedef struct listNode{
     int data;
     listPointer link; 
 }listNode;
+
 typedef struct stack{
     listPointer top;
     listPointer header;
 }stack;
+
+listPointer makeNode(int value){
+    listPointer temp;
+
+    temp=malloc(sizeof(struct listNode));
+    temp->data=value;
+    temp->link=NULL;
+    return temp;
+
+}
+
+void push(stack *list, int data){
+    listPointer lastNode;
+    listPointer newNode = makeNode(data);
+    if (list->top == NULL){
+        
+    }
+    = list->top->link; 
+    list->top->link = newNode;
+    list->top = newNode;
+}
+
+
+
+int pop(stack* list){
+    if(stackEmpty(list)){
+        puts("Stack empty!!");
+        return;
+    }
+    int data = list->top->data;
+
+
+}
 
 
 void push(stack *list){
@@ -37,7 +71,7 @@ void push(stack *list){
 }
 
 int stackEmpty(stack *s){
-    return !(s->header->link);
+    return s->header->link==NULL;
 }
 
 int pop(stack *s){
@@ -93,7 +127,10 @@ void doStackOperations(stack* s){
         }
 
         if(choice==1){
-            push(s);
+            int item;
+            printf("Enter the data to be stored\n");
+            scanf("%d",&item);
+            push(s, item);
             printf("The elements in the list after the push operation are as follows\n");
             displayList(s);
         }
