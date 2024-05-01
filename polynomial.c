@@ -93,8 +93,7 @@ polyPointer addPoly(polyPointer a,polyPointer b,polyPointer c){
 
         if(polyA->exp > polyB->exp){
             polyC=attach(polyA,polyC);
-            printf("%d",polyC->coeff);
-            polyB=polyB->link;
+            polyA=polyA->link;
             if(checkNull(polyB,polyA,polyC)){
                 break;
             }
@@ -102,8 +101,7 @@ polyPointer addPoly(polyPointer a,polyPointer b,polyPointer c){
 
         if(polyA->exp < polyB->exp){
             polyC=attach(polyB,polyC);
-            
-            polyA=polyA->link;
+            polyB=polyB->link;
             if(checkNull(polyA,polyB,polyC)){
                 break;
             }
@@ -121,7 +119,7 @@ polyPointer addPoly(polyPointer a,polyPointer b,polyPointer c){
             }
             
         }
-        // printf("%d",polyC->coeff);
+      
    }
    return head;
 
